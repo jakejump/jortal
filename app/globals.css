@@ -3,21 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0a0a0a;
+  --background-secondary: #111111;
+  --foreground: #f8f7fb;
+  --foreground-secondary: #b8b5c4;
+  --accent: #e8e6f0;
+  --accent-blue: #e0dde8;
+  --border: #2e2e3a;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
 }
 
 @layer utilities {
