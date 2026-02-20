@@ -21,6 +21,7 @@ model User {
   pendingApproval PendingApproval?
   createdEvents   Event[]         @relation("EventAdmin")
   uploadedNewsletters Newsletter[] @relation("NewsletterAdmin")
+  chatMessages   ChatMessage[]
 }
 
 model PendingApproval {
@@ -76,4 +77,13 @@ model Newsletter {
 
   adminId String @map("admin_id")
   admin   User   @relation("NewsletterAdmin", fields: [adminId], references: [id], onDelete: Cascade)
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

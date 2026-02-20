@@ -32,7 +32,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (path.startsWith("/dashboard") || path.startsWith("/profile") || path.startsWith("/directory") || path.startsWith("/events") || path.startsWith("/newsletter") || path.startsWith("/donate")) {
+  if (path.startsWith("/dashboard") || path.startsWith("/profile") || path.startsWith("/directory") || path.startsWith("/events") || path.startsWith("/newsletter") || path.startsWith("/chat") || path.startsWith("/donate")) {
     if (!token) return NextResponse.redirect(new URL("/api/auth/signin", request.url));
     if ((token.role as string) === "pending") return NextResponse.redirect(new URL("/pending", request.url));
     return NextResponse.next();
@@ -52,6 +52,7 @@ export const config = {
     "/directory/:path*",
     "/events/:path*",
     "/newsletter/:path*",
+    "/chat/:path*",
     "/donate",
     "/admin/:path*",
   ],
